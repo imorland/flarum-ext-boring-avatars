@@ -1,0 +1,58 @@
+{
+    "name": "ianm/boring-avatars",
+    "description": "Replace default Flarum avatars with Boring Avatars.",
+    "keywords": [
+        "flarum"
+    ],
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^1.8.0",
+        "enshrined/svg-sanitize": "*"
+    },
+    "authors": [
+        {
+            "name": "IanM",
+            "email": "ian@morland.me",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "IanM\\BoringAvatars\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Boring Avatars",
+            "category": "",
+            "icon": {
+                "image": "assets/logo.svg",
+                "backgroundColor": "#FECC4D"
+            }
+        },
+        "flarum-cli": {
+            "modules": {
+                "admin": true,
+                "forum": true,
+                "js": true,
+                "jsCommon": true,
+                "css": true,
+                "locale": true,
+                "gitConf": true,
+                "githubActions": true,
+                "prettier": true,
+                "typescript": true,
+                "bundlewatch": false,
+                "backendTesting": false,
+                "editorConfig": true,
+                "styleci": false
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require-dev": {
+        "fof/oauth": "*"
+    }
+}

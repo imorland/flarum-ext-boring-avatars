@@ -1,0 +1,22 @@
+{
+    "name": "@ianm/boring-avatars",
+    "private": true,
+    "version": "0.0.0",
+    "devDependencies": {
+        "flarum-webpack-config": "^2.0.0",
+        "webpack": "^5.88.2",
+        "webpack-cli": "^5.1.4",
+        "prettier": "^3.0.3",
+        "@flarum/prettier-config": "^1.0.0",
+        "flarum-tsconfig": "^1.0.2",
+        "typescript": "^4.5.4"
+    },
+    "scripts": {
+        "dev": "webpack --mode development --watch",
+        "build": "webpack --mode production",
+        "analyze": "cross-env ANALYZER=true yarn run build",
+        "format": "prettier --write src",
+        "format-check": "prettier --check src"
+    },
+    "prettier": "@flarum/prettier-config"
+}
