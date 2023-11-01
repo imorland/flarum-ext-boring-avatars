@@ -29,7 +29,7 @@ class GenerateAvatarHandler
 
         //$svg = $this->sanitizer->sanitize($svg);
 
-        if ($svg === false) {
+        if ($svg === '' || empty($svg)) {
             $svg = null;
         }
 

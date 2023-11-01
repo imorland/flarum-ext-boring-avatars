@@ -6,6 +6,7 @@ use Flarum\Bus\Dispatcher as BusDispatcher;
 use Flarum\User\Event\LoggedIn;
 use Flarum\User\Event\Registered;
 use Flarum\User\Event\RegisteringFromProvider;
+use Flarum\User\Event\Renamed;
 use FoF\Extend\Events\OAuthLoginSuccessful;
 use IanM\BoringAvatars\BoringAvatar;
 use IanM\BoringAvatars\Command\GenerateAvatar as GenerateAvatarCommand;
@@ -20,12 +21,12 @@ class GenerateAvatar
     
     public function subscribe(EventsDispatcher $events): void
     {
-        $events->listen([Registered::class, LoggedIn::class], [$this, 'generate']);
+        $events->listen([Registered::class, LoggedIn::class, Renamed::class], [$this, 'generate']);
     }
 
     public function generate($event): void
     {
-        if ($event->user && empty($event->user->user_svg)) {
+        if (($event->user && empty($event->user->user_svg)) || $event instanceof Renamed) {
             $event->user = $this->bus->dispatch(new GenerateAvatarCommand(
                 $event->user,
                 BoringAvatar::$defaultGenerationSize,

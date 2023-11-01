@@ -36,6 +36,9 @@ return [
 
     new Extend\Locales(__DIR__.'/locale'),
 
+    (new Extend\Model(User::class))
+        ->cast('user_svg', 'string'),
+
     (new Extend\Routes('api'))
         ->get('/users/{id}/boring-avatar', 'users.boring-avatar', Api\Controller\ShowBoringAvatarController::class),
 

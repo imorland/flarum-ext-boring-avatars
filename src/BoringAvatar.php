@@ -73,12 +73,12 @@ abstract class BoringAvatar
 
     /**
      * Get the nth digit of a number.
-     * Update: Used absolute value of the number to mimic JavaScript's non-negative numbers.
+     * Used absolute value of the number to mimic JavaScript's non-negative numbers.
      */
     protected function getDigit(int $number, int $ntn): int
     {
-        $m = floor(($number / (pow(10, $ntn))));
-        return $this->getModulus($m, 10);
+        $m = (int) floor(($number / (pow(10, $ntn))));
+        return (int) $this->getModulus($m, 10);
     }
 
     /**
@@ -94,7 +94,7 @@ abstract class BoringAvatar
      */
     protected function getUnit(int $number, float $range, ?int $index = null): float
     {
-        $value = $this->getModulus($number, $range);
+        $value = $this->getModulus($number, (int) $range);
 
         if ($index !== null && ($this->getDigit($number, $index) % 2) === 0) {
             return -$value;

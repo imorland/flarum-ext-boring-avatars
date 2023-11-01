@@ -7,7 +7,8 @@
     "type": "flarum-extension",
     "license": "MIT",
     "require": {
-        "flarum/core": "^1.8.0",
+        "php": "^8.0",
+        "flarum/core": "^1.8.3",
         "enshrined/svg-sanitize": "*"
     },
     "authors": [
@@ -28,7 +29,10 @@
             "category": "",
             "icon": {
                 "image": "assets/logo.svg",
-                "backgroundColor": "#FECC4D"
+                "backgroundColor": "#FECC4D",
+                "backgroundSize": "90%",
+                "backgroundRepeat": "no-repeat",
+                "backgroundPosition": "center"
             }
         },
         "flarum-cli": {
@@ -53,6 +57,15 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require-dev": {
-        "fof/oauth": "*"
+        "fof/oauth": "*",
+        "flarum/phpstan": "*",
+        "blomstra/gdpr": "@beta"
+    },
+    "scripts": {
+        "analyse:phpstan": "phpstan analyse",
+        "clear-cache:phpstan": "phpstan clear-result-cache"
+    },
+    "scripts-descriptions": {
+        "analyse:phpstan": "Run static analysis"
     }
 }
