@@ -30,7 +30,7 @@
             "icon": {
                 "image": "assets/logo.svg",
                 "backgroundColor": "#FECC4D",
-                "backgroundSize": "90%",
+                "backgroundSize": "100%",
                 "backgroundRepeat": "no-repeat",
                 "backgroundPosition": "center"
             }

@@ -11,6 +11,7 @@
 
 namespace IanM\BoringAvatars;
 
+use Blomstra\Gdpr\Extend\UserData;
 use Flarum\Api\Controller\ListUsersController;
 use Flarum\Api\Controller\ShowForumController;
 use Flarum\Api\Controller\ShowUserController;
@@ -62,5 +63,11 @@ return [
         ->subscribe(Listener\GenerateAvatar::class),
 
     (new Extend\Console())
-        ->command(Console\GenerateBoringAvatars::class)
+        ->command(Console\GenerateBoringAvatars::class),
+
+    (new Extend\Conditional())
+        ->whenExtensionEnabled('blomstra-gdpr', fn () => [
+            (new UserData())
+                ->addType(Data\BoringAvatar::class),
+        ]),
 ];

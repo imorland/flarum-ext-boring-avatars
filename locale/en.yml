@@ -4,4 +4,10 @@ ianm-boring-avatars:
   admin:
     my_cool_key: My Cool Key
 
-  forum:
+blomstra-gdpr:
+  lib:
+    data:
+      boringavatar:
+        export_description: Adds the boring avatar to the export zip.
+        anonymize_description: Deletes the boring avatar, and regenerates a new random one.
+        delete_description: Deletes the boring avatar.

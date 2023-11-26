@@ -2,12 +2,12 @@
 
 namespace IanM\BoringAvatars\Listener;
 
+use Blomstra\Gdpr\Events\Erased;
+use Blomstra\Gdpr\Models\ErasureRequest;
 use Flarum\Bus\Dispatcher as BusDispatcher;
 use Flarum\User\Event\LoggedIn;
 use Flarum\User\Event\Registered;
-use Flarum\User\Event\RegisteringFromProvider;
 use Flarum\User\Event\Renamed;
-use FoF\Extend\Events\OAuthLoginSuccessful;
 use IanM\BoringAvatars\BoringAvatar;
 use IanM\BoringAvatars\Command\GenerateAvatar as GenerateAvatarCommand;
 use Illuminate\Contracts\Events\Dispatcher as EventsDispatcher;
@@ -16,12 +16,12 @@ class GenerateAvatar
 {
     public function __construct(public BusDispatcher $bus)
     {
-        
     }
     
     public function subscribe(EventsDispatcher $events): void
     {
         $events->listen([Registered::class, LoggedIn::class, Renamed::class], [$this, 'generate']);
+        $events->listen(Erased::class, [$this, 'handleErased']);
     }
 
     public function generate($event): void
@@ -32,6 +32,21 @@ class GenerateAvatar
                 BoringAvatar::$defaultGenerationSize,
                 BoringAvatar::$defaultSquareAvatar
             ));
+        }
+    }
+
+    public function handleErased(Erased $event): void
+    {
+        if ($event->mode === ErasureRequest::MODE_ANONYMIZATION) {
+            $user = $event->user;
+
+            if ($user) {
+                $this->bus->dispatch(new GenerateAvatarCommand(
+                    $user,
+                    BoringAvatar::$defaultGenerationSize,
+                    BoringAvatar::$defaultSquareAvatar
+                ));
+            }
         }
     }
 }
