@@ -8,8 +8,10 @@ use Illuminate\Contracts\View\View;
 
 abstract class BoringAvatar
 {
-    public function __construct(protected Factory $view, protected SettingsRepositoryInterface $settings)
-    {
+    public function __construct(
+        protected Factory $view,
+        protected SettingsRepositoryInterface $settings
+    ) {
     }
 
     static string $name;
@@ -25,11 +27,13 @@ abstract class BoringAvatar
 
     protected function getDefaultColors(): array
     {
-        $boringDefaults = ['#92A1C6', '#146A7C', '#F0AB3D', '#C271B4', '#C20D90'];
-
-        if ($this->settings->get('ianm-boring-avatars.include_forum_colors')) {
-            $boringDefaults = array_merge_recursive($boringDefaults, [$this->settings->get('theme_primary_color'), $this->settings->get('theme_secondary_color')]);
-        }
+        $boringDefaults = [
+            $this->settings->get('ianm-boring-avatars.color1'),
+            $this->settings->get('ianm-boring-avatars.color2'),
+            $this->settings->get('ianm-boring-avatars.color3'),
+            $this->settings->get('ianm-boring-avatars.color4'),
+            $this->settings->get('ianm-boring-avatars.color5'),
+        ];
         
         return $boringDefaults;
     }

@@ -1,8 +1,11 @@
 ianm-boring-avatars:
-  # For more details on the format
-  # Checkout https://docs.flarum.org/extend/i18n/#appendix-a-standard-key-format
   admin:
     settings:
+      color1: Color 1
+      color2: Color 2
+      color3: Color 3
+      color4: Color 4
+      color5: Color 5
       theme: Theme
       theme_help: |
         The theme to use for the boring avatars.

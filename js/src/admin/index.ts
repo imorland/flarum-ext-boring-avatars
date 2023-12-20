@@ -1,13 +1,8 @@
 import app from 'flarum/admin/app';
-import modifyCommonAvatarHelper from '../common/modifyCommonAvatarHelper';
-import modifyAdminAvatarHelper from './modifyAdminAvatarHelper';
 
 export { default as extend } from './extend';
 
 app.initializers.add('ianm/boring-avatars', () => {
-  //modifyCommonAvatarHelper();
-  //modifyAdminAvatarHelper();
-
   const themeOptionsArray: string[] = Array.isArray(app.data.boringAvatarThemes) ? app.data.boringAvatarThemes : [];
 
   // Convert the array into a key-value pair object.
@@ -19,16 +14,35 @@ app.initializers.add('ianm/boring-avatars', () => {
   app.extensionData
     .for('ianm-boring-avatars')
     .registerSetting({
+      type: 'color-preview',
+      setting: 'ianm-boring-avatars.color1',
+      label: app.translator.trans('ianm-boring-avatars.admin.settings.color1'),
+    })
+    .registerSetting({
+      type: 'color-preview',
+      setting: 'ianm-boring-avatars.color2',
+      label: app.translator.trans('ianm-boring-avatars.admin.settings.color2'),
+    })
+    .registerSetting({
+      type: 'color-preview',
+      setting: 'ianm-boring-avatars.color3',
+      label: app.translator.trans('ianm-boring-avatars.admin.settings.color3'),
+    })
+    .registerSetting({
+      type: 'color-preview',
+      setting: 'ianm-boring-avatars.color4',
+      label: app.translator.trans('ianm-boring-avatars.admin.settings.color4'),
+    })
+    .registerSetting({
+      type: 'color-preview',
+      setting: 'ianm-boring-avatars.color5',
+      label: app.translator.trans('ianm-boring-avatars.admin.settings.color5'),
+    })
+    .registerSetting({
       setting: 'ianm-boring-avatars.theme',
       type: 'select',
       label: app.translator.trans('ianm-boring-avatars.admin.settings.theme'),
       help: app.translator.trans('ianm-boring-avatars.admin.settings.theme_help'),
       options: avatarOptions,
-    })
-    .registerSetting({
-      setting: 'ianm-boring-avatars.include_forum_colors',
-      type: 'boolean',
-      label: app.translator.trans('ianm-boring-avatars.admin.settings.include_forum_colors'),
-      help: app.translator.trans('ianm-boring-avatars.include_forum_colors_help'),
     });
 });

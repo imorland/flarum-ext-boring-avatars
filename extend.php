@@ -56,7 +56,11 @@ return [
         ->namespace('ianm-boring-avatars', __DIR__.'/views/boring'),
 
     (new Extend\Settings())
-        ->default('ianm-boring-avatars.include_forum_colors', false)
+        ->default('ianm-boring-avatars.color1', '#92A1C6')
+        ->default('ianm-boring-avatars.color2', '#146A7C')
+        ->default('ianm-boring-avatars.color3', '#F0AB3D')
+        ->default('ianm-boring-avatars.color4', '#C271B4')
+        ->default('ianm-boring-avatars.color5', '#C20D90')
         ->default('ianm-boring-avatars.theme', Component\Beam::$name),
 
     (new Extend\Event())
