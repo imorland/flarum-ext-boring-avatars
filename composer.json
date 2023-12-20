@@ -6,6 +6,11 @@
     ],
     "type": "flarum-extension",
     "license": "MIT",
+    "funding": [
+        {
+            "url": "https://www.buymeacoffee.com/ianm1"
+        }
+    ],
     "require": {
         "php": "^8.0",
         "flarum/core": "^1.8.3",

@@ -26,3 +26,9 @@ php flarum cache:clear
 - [GitHub](https://github.com/ianm/boring-avatars)
 - [Discuss](https://discuss.flarum.org/d/PUT_DISCUSS_SLUG_HERE)
 - [Extension Icon](https://source.boringavatars.com/beam/30/Flarum%20Boring%20Avatar?square)
+
+## Support
+
+Please consider supporting my extension development and maintenance work.
+
+<a href="https://www.buymeacoffee.com/ianm1" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
