@@ -2,7 +2,10 @@ ianm-boring-avatars:
   # For more details on the format
   # Checkout https://docs.flarum.org/extend/i18n/#appendix-a-standard-key-format
   admin:
-    my_cool_key: My Cool Key
+    settings:
+      theme: Theme
+      theme_help: |
+        The theme to use for the boring avatars.
 
 blomstra-gdpr:
   lib:

@@ -6,6 +6,10 @@
     ],
     "type": "flarum-extension",
     "license": "MIT",
+    "support": {
+        "issues": "https://github.com/imorland/flarum-ext-boring-avatars/issues",
+        "source": "https://github.com/imorland/flarum-ext-boring-avatars"
+    },
     "funding": [
         {
             "url": "https://www.buymeacoffee.com/ianm1"

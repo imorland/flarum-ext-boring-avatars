@@ -40,7 +40,7 @@ class GenerateAvatar
         if ($event->mode === ErasureRequest::MODE_ANONYMIZATION) {
             $user = $event->user;
 
-            if ($user) {
+            if ($user->exists) {
                 $this->bus->dispatch(new GenerateAvatarCommand(
                     $user,
                     BoringAvatar::$defaultGenerationSize,
