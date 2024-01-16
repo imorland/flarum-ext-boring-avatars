@@ -6,10 +6,13 @@ app.initializers.add('ianm/boring-avatars', () => {
   const themeOptionsArray: string[] = Array.isArray(app.data.boringAvatarThemes) ? app.data.boringAvatarThemes : [];
 
   // Convert the array into a key-value pair object.
-  const avatarOptions: Record<string, string> = themeOptionsArray.reduce((obj, theme) => {
-    obj[theme] = theme; // Use theme as both key and value.
-    return obj;
-  }, {} as Record<string, string>);
+  const avatarOptions: Record<string, string> = themeOptionsArray.reduce(
+    (obj, theme) => {
+      obj[theme] = theme; // Use theme as both key and value.
+      return obj;
+    },
+    {} as Record<string, string>
+  );
 
   app.extensionData
     .for('ianm-boring-avatars')
