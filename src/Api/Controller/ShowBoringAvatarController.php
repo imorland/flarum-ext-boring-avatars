@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of ianm/boring-avatars.
+ *
+ * Copyright (c) 2024 IanM.
+ *
+ * For the full copyright and license information, please view the LICENSE.md
+ * file that was distributed with this source code.
+ */
+
 namespace IanM\BoringAvatars\Api\Controller;
 
 use Flarum\Bus\Dispatcher;
@@ -31,8 +40,8 @@ class ShowBoringAvatarController implements RequestHandlerInterface
         if (empty($user->user_svg)) {
             /** @var User $user */
             $user = $this->bus->dispatch(new GenerateAvatar(
-                $user, 
-                BoringAvatar::$defaultGenerationSize, 
+                $user,
+                BoringAvatar::$defaultGenerationSize,
                 BoringAvatar::$defaultSquareAvatar
             ));
         }
@@ -41,8 +50,8 @@ class ShowBoringAvatarController implements RequestHandlerInterface
             base64_decode($user->user_svg),
             200,
             [
-                'Content-Type' => 'image/svg+xml',
-                'Cache-Control' => 'max-age=0, s-maxage=1'
+                'Content-Type'  => 'image/svg+xml',
+                'Cache-Control' => 'max-age=0, s-maxage=1',
             ]
         );
     }

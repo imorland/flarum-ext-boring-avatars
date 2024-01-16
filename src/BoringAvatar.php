@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of ianm/boring-avatars.
+ *
+ * Copyright (c) 2024 IanM.
+ *
+ * For the full copyright and license information, please view the LICENSE.md
+ * file that was distributed with this source code.
+ */
+
 namespace IanM\BoringAvatars;
 
 use Flarum\Settings\SettingsRepositoryInterface;
@@ -14,15 +23,15 @@ abstract class BoringAvatar
     ) {
     }
 
-    static string $name;
+    public static string $name;
 
-    static int $defaultGenerationSize = 100;
+    public static int $defaultGenerationSize = 100;
 
-    static bool $defaultSquareAvatar = false;
+    public static bool $defaultSquareAvatar = false;
 
     public function getMaskId(string $name): string
     {
-        return 'mask__' . static::$name . '__' . md5($name);
+        return 'mask__'.static::$name.'__'.md5($name);
     }
 
     protected function getDefaultColors(): array
@@ -34,7 +43,7 @@ abstract class BoringAvatar
             $this->settings->get('ianm-boring-avatars.color4'),
             $this->settings->get('ianm-boring-avatars.color5'),
         ];
-        
+
         return $boringDefaults;
     }
 
@@ -52,10 +61,10 @@ abstract class BoringAvatar
             $hash = (($hash << 5) - $hash) + $char;
 
             // Convert to 32bit integer
-            $hash = (int)($hash & 0xFFFFFFFF);
+            $hash = (int) ($hash & 0xFFFFFFFF);
 
             if ($hash & 0x80000000) {
-                $hash = - (~$hash + 1);
+                $hash = -(~$hash + 1);
             }
         }
 
@@ -72,6 +81,7 @@ abstract class BoringAvatar
     protected function getModulus(int $num, int $max): float
     {
         $result = $num % $max;
+
         return $result < 0 ? $result + $max : $result;
     }
 
@@ -81,7 +91,8 @@ abstract class BoringAvatar
      */
     protected function getDigit(int $number, int $ntn): int
     {
-        $m = (int) floor(($number / (pow(10, $ntn))));
+        $m = (int) floor($number / pow(10, $ntn));
+
         return (int) $this->getModulus($m, 10);
     }
 
@@ -90,7 +101,7 @@ abstract class BoringAvatar
      */
     protected function getBoolean(int $number, int $ntn): bool
     {
-        return !($this->getModulus($this->getDigit($number, $ntn), 2));
+        return !$this->getModulus($this->getDigit($number, $ntn), 2);
     }
 
     /**
@@ -103,9 +114,9 @@ abstract class BoringAvatar
         if ($index !== null && ($this->getDigit($number, $index) % 2) === 0) {
             return -$value;
         }
+
         return $value;
     }
-
 
     /**
      * Get a random color from a set based on a number.
@@ -113,7 +124,8 @@ abstract class BoringAvatar
      */
     protected function getRandomColor(int $number, array $colors, int $range): string
     {
-        $index = ($this->getModulus($number, $range));
+        $index = $this->getModulus($number, $range);
+
         return $colors[$index];
     }
 
@@ -124,7 +136,7 @@ abstract class BoringAvatar
     {
         $hexcolor = ltrim($hexcolor, '#');
         if (strlen($hexcolor) !== 6) {
-            throw new \InvalidArgumentException("Invalid hex color provided.");
+            throw new \InvalidArgumentException('Invalid hex color provided.');
         }
 
         $r = hexdec(substr($hexcolor, 0, 2));

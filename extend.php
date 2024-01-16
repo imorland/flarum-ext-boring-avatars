@@ -12,9 +12,6 @@
 namespace IanM\BoringAvatars;
 
 use Blomstra\Gdpr\Extend\UserData;
-use Flarum\Api\Controller\ListUsersController;
-use Flarum\Api\Controller\ShowForumController;
-use Flarum\Api\Controller\ShowUserController;
 use Flarum\Api\Serializer\BasicUserSerializer;
 use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Extend;

@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of ianm/boring-avatars.
+ *
+ * Copyright (c) 2024 IanM.
+ *
+ * For the full copyright and license information, please view the LICENSE.md
+ * file that was distributed with this source code.
+ */
+
 namespace IanM\BoringAvatars\Component;
 
 use IanM\BoringAvatars\BoringAvatar;
@@ -10,7 +19,7 @@ class Ring extends BoringAvatar
     const SIZE = 90;
     const COLORS = 5;
 
-    static string $name = 'ring';
+    public static string $name = 'ring';
 
     protected function generateData(string $name, array $colors, int $renderSize): array
     {
@@ -31,7 +40,7 @@ class Ring extends BoringAvatar
             $colorsShuffle[3],
             $colorsShuffle[3],
             $colorsShuffle[0],
-            $colorsShuffle[4]
+            $colorsShuffle[4],
         ];
 
         return $colorsList;
@@ -45,11 +54,11 @@ class Ring extends BoringAvatar
 
         return $this->view->make('ianm-boring-avatars::ring', [
             'ringColors' => $this->generateData($name, $colors, $renderSize),
-            'maskID' => $this->getMaskId($name),
-            'square' => $square,
-            'size' => self::SIZE,
+            'maskID'     => $this->getMaskId($name),
+            'square'     => $square,
+            'size'       => self::SIZE,
             'renderSize' => $renderSize,
-            'fill' => 'none'
+            'fill'       => 'none',
         ]);
     }
 }

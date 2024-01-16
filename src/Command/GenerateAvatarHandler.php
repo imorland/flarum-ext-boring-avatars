@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of ianm/boring-avatars.
+ *
+ * Copyright (c) 2024 IanM.
+ *
+ * For the full copyright and license information, please view the LICENSE.md
+ * file that was distributed with this source code.
+ */
+
 namespace IanM\BoringAvatars\Command;
 
 use enshrined\svgSanitize\Sanitizer;
@@ -13,7 +22,7 @@ class GenerateAvatarHandler
     public function __construct(protected BoringAvatar $avatar, protected Sanitizer $sanitizer, protected Dispatcher $events)
     {
     }
-    
+
     public function handle(GenerateAvatar $command): User
     {
         $view = $this->avatar->generateSvg(

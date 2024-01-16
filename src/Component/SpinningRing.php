@@ -1,12 +1,21 @@
 <?php
 
+/*
+ * This file is part of ianm/boring-avatars.
+ *
+ * Copyright (c) 2024 IanM.
+ *
+ * For the full copyright and license information, please view the LICENSE.md
+ * file that was distributed with this source code.
+ */
+
 namespace IanM\BoringAvatars\Component;
 
 use Illuminate\Contracts\View\View;
 
 class SpinningRing extends Ring
 {
-    static string $name = 'spinningring';
+    public static string $name = 'spinningring';
 
     const ANIMATED_RINGS = 6;
     const COLORS = 9;
@@ -21,24 +30,24 @@ class SpinningRing extends Ring
         }
 
         $animationDetails = [
-            'keyTimes' => "0; 0.33; 1",
-            'values' => [
-                'clockwise' => "0 45 45; 360 45 45; 360 45 45",
-                'anticlockwise' => "360 45 45; 0 45 45; 0 45 45",
-            ]
+            'keyTimes' => '0; 0.33; 1',
+            'values'   => [
+                'clockwise'     => '0 45 45; 360 45 45; 360 45 45',
+                'anticlockwise' => '360 45 45; 0 45 45; 0 45 45',
+            ],
         ];
 
         return $this->view->make('ianm-boring-avatars::spinningring', [
-            'ringColors' => $this->generateColors($name, $colors),
-            'maskID' => $this->getMaskId($name),
-            'square' => $square,
-            'size' => self::SIZE,
-            'renderSize' => $renderSize,
-            'fill' => 'none',
+            'ringColors'          => $this->generateColors($name, $colors),
+            'maskID'              => $this->getMaskId($name),
+            'square'              => $square,
+            'size'                => self::SIZE,
+            'renderSize'          => $renderSize,
+            'fill'                => 'none',
             'animationStartTimes' => $this->calculateStartTimes(),
-            'animationDurations' => $this->calculateDurations(),
-            'animationDetails' => $animationDetails,
-            'rings' => self::ANIMATED_RINGS
+            'animationDurations'  => $this->calculateDurations(),
+            'animationDetails'    => $animationDetails,
+            'rings'               => self::ANIMATED_RINGS,
         ]);
     }
 
@@ -59,8 +68,9 @@ class SpinningRing extends Ring
     {
         $startTimes = [];
         for ($i = 0; $i < self::ANIMATED_RINGS; $i++) {
-            $startTimes[] = ($i * self::START_TIME_INCREMENT) . "s";
+            $startTimes[] = ($i * self::START_TIME_INCREMENT).'s';
         }
+
         return $startTimes;
     }
 
@@ -68,8 +78,9 @@ class SpinningRing extends Ring
     {
         $durations = [];
         for ($i = 0; $i < self::ANIMATED_RINGS; $i++) {
-            $durations[] = (self::BASE_DURATION - $i * self::DURATION_DECREMENT) . "s";
+            $durations[] = (self::BASE_DURATION - $i * self::DURATION_DECREMENT).'s';
         }
+
         return $durations;
     }
 }
