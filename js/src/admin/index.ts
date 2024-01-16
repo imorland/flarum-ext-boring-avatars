@@ -9,7 +9,7 @@ app.initializers.add('ianm/boring-avatars', () => {
   const avatarOptions: Record<string, string> = themeOptionsArray.reduce((obj, theme) => {
     obj[theme] = theme; // Use theme as both key and value.
     return obj;
-  }, {});
+  }, {} as Record<string, string>);
 
   app.extensionData
     .for('ianm-boring-avatars')

@@ -31,4 +31,4 @@ php flarum cache:clear
 
 Please consider supporting my extension development and maintenance work.
 
-<a href="https://www.buymeacoffee.com/ianm1" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+[![Buy Me A Coffee](https://cdn.buymeacoffee.com/buttons/default-orange.png)](https://www.buymeacoffee.com/ianm1)
