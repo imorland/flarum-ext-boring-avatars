@@ -12,6 +12,7 @@
 namespace IanM\BoringAvatars\Command;
 
 use enshrined\svgSanitize\Sanitizer;
+use Flarum\Settings\SettingsRepositoryInterface;
 use Flarum\User\User;
 use IanM\BoringAvatars\BoringAvatar;
 use IanM\BoringAvatars\Event\BoringAvatarCreating;
@@ -19,14 +20,18 @@ use Illuminate\Contracts\Events\Dispatcher;
 
 class GenerateAvatarHandler
 {
-    public function __construct(protected BoringAvatar $avatar, protected Sanitizer $sanitizer, protected Dispatcher $events)
-    {
+    public function __construct(
+        protected BoringAvatar $avatar,
+        protected Sanitizer $sanitizer,
+        protected Dispatcher $events,
+        protected SettingsRepositoryInterface $settings
+    ) {
     }
 
     public function handle(GenerateAvatar $command): User
     {
         $view = $this->avatar->generateSvg(
-            $command->user->display_name,
+            $this->getUserIdentifier($command->user),
             $command->renderSize,
             $command->square,
             $command->colors,
@@ -52,5 +57,12 @@ class GenerateAvatarHandler
     protected function encodeSvgUrl(string $svg): string
     {
         return base64_encode($svg);
+    }
+
+    protected function getUserIdentifier(User $user): string
+    {
+        $identifier = $this->settings->get('ianm-boring-avatars.identifier');
+
+        return $user->{$identifier};
     }
 }

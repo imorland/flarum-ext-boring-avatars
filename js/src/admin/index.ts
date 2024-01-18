@@ -17,6 +17,13 @@ app.initializers.add('ianm/boring-avatars', () => {
   app.extensionData
     .for('ianm-boring-avatars')
     .registerSetting({
+      setting: 'ianm-boring-avatars.theme',
+      type: 'select',
+      label: app.translator.trans('ianm-boring-avatars.admin.settings.theme'),
+      help: app.translator.trans('ianm-boring-avatars.admin.settings.theme_help'),
+      options: avatarOptions,
+    })
+    .registerSetting({
       type: 'color-preview',
       setting: 'ianm-boring-avatars.color1',
       label: app.translator.trans('ianm-boring-avatars.admin.settings.color1'),
@@ -42,10 +49,14 @@ app.initializers.add('ianm/boring-avatars', () => {
       label: app.translator.trans('ianm-boring-avatars.admin.settings.color5'),
     })
     .registerSetting({
-      setting: 'ianm-boring-avatars.theme',
       type: 'select',
-      label: app.translator.trans('ianm-boring-avatars.admin.settings.theme'),
-      help: app.translator.trans('ianm-boring-avatars.admin.settings.theme_help'),
-      options: avatarOptions,
+      setting: 'ianm-boring-avatars.identifier',
+      label: app.translator.trans('ianm-boring-avatars.admin.settings.identifier'),
+      help: app.translator.trans('ianm-boring-avatars.admin.settings.identifier_help'),
+      options: {
+        'id': app.translator.trans('ianm-boring-avatars.admin.settings.identifier_id'),
+        'display_name': app.translator.trans('ianm-boring-avatars.admin.settings.identifier_display_name'),
+        'email': app.translator.trans('ianm-boring-avatars.admin.settings.identifier_email'),
+      }
     });
 });
