@@ -35,7 +35,7 @@ class GenerateAvatar
 
     public function generate($event): void
     {
-        if (($event->user && empty($event->user->user_svg)) || $event instanceof Renamed) {
+        if ((!$event->user->isGuest() && empty($event->user->user_svg)) || $event instanceof Renamed) {
             $event->user = $this->bus->dispatch(new GenerateAvatarCommand(
                 $event->user,
                 BoringAvatar::$defaultGenerationSize,

@@ -16,9 +16,11 @@ use Flarum\Api\Serializer\BasicUserSerializer;
 use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Extend;
 use Flarum\Frontend\Document;
+use Flarum\Settings\Event\Saved;
 use Flarum\User\User;
 use IanM\BoringAvatars\Api\Serializer\AddBoringAvatarAttributes;
 use IanM\BoringAvatars\Api\Serializer\AddForumAttributes;
+use IanM\BoringAvatars\Extend\Lifecycle;
 
 return [
     (new Extend\Frontend('forum'))
@@ -36,6 +38,8 @@ return [
 
     (new Extend\Model(User::class))
         ->cast('user_svg', 'string'),
+
+    (new Lifecycle()),
 
     (new Extend\Routes('api'))
         ->get('/users/{id}/boring-avatar', 'users.boring-avatar', Api\Controller\ShowBoringAvatarController::class),
@@ -61,7 +65,8 @@ return [
         ->default('ianm-boring-avatars.theme', Component\Beam::$name),
 
     (new Extend\Event())
-        ->subscribe(Listener\GenerateAvatar::class),
+        ->subscribe(Listener\GenerateAvatar::class)
+        ->listen(Saved::class, Listener\SettingsChanged::class),
 
     (new Extend\Console())
         ->command(Console\GenerateBoringAvatars::class),
