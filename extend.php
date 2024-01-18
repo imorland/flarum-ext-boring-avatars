@@ -62,7 +62,8 @@ return [
         ->default('ianm-boring-avatars.color3', '#F0AB3D')
         ->default('ianm-boring-avatars.color4', '#C271B4')
         ->default('ianm-boring-avatars.color5', '#C20D90')
-        ->default('ianm-boring-avatars.theme', Component\Beam::$name),
+        ->default('ianm-boring-avatars.theme', Component\Beam::$name)
+        ->default('ianm-boring-avatars.identifier', 'display_name'),
 
     (new Extend\Event())
         ->subscribe(Listener\GenerateAvatar::class)

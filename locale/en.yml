@@ -6,6 +6,12 @@ ianm-boring-avatars:
       color3: Color 3
       color4: Color 4
       color5: Color 5
+      identifier: Identifier
+      identifier_help: |
+        Used to generate a unique avatar for each user.
+      identifier_id: User ID
+      identifier_display_name: Display name
+      identifier_email: Email
       theme: Theme
       theme_help: |
         The theme to use for the boring avatars.
