@@ -19,10 +19,15 @@ use Symfony\Component\Console\Output\NullOutput;
 
 class AvatarGenerationJob extends AbstractJob
 {
+    public function __construct(
+        protected bool $force = false
+    ) {
+    }
+    
     public function handle(GenerateBoringAvatars $command, Container $container): void
     {
         $command->setLaravel($container);
 
-        $command->run(new ArrayInput(['--force' => true]), new NullOutput());
+        $command->run(new ArrayInput($this->force ? ['--force' => true] : []), new NullOutput());
     }
 }

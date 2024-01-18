@@ -34,7 +34,7 @@ class SettingsChanged
         }, ARRAY_FILTER_USE_KEY);
 
         if (!empty($keysWithPrefix)) {
-            $this->queue->push(new AvatarGenerationJob());
+            $this->queue->push(new AvatarGenerationJob(true));
         }
     }
 }
