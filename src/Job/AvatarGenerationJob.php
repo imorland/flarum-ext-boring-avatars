@@ -23,7 +23,7 @@ class AvatarGenerationJob extends AbstractJob
         protected bool $force = false
     ) {
     }
-    
+
     public function handle(GenerateBoringAvatars $command, Container $container): void
     {
         $command->setLaravel($container);
