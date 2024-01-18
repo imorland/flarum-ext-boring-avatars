@@ -12,6 +12,7 @@ Utilize generated "Boring Avatars" on your Flarum forum, without compromising yo
 
 - Choose from 6 themes + plus an exclusive animated version of the "ring" theme
 - Customize the color palette used
+- Completely self contained, no external calls are required
 - Multiple identifier configuration (Select from ID, username or email address to generate unique avatars)
 - SVG avatars, which are directly included in the user object - no additional network requests to retrieve avatars
 - Automatically updates the avatar if the identifier changes
