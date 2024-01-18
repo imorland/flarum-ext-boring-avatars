@@ -26,6 +26,14 @@ Want to make changes to the generation settings? No problem, once the settings a
 
 This extension is best used alongside a queue, especially when the forum has a large number of users.
 
+An API endpoint is also available to directly retrieve the avatar for a user:
+
+```
+/api/users[id]/boring-avatar
+```
+
+this will return the SVG image file for the given user.
+
 ## Installation
 
 Install with composer:
