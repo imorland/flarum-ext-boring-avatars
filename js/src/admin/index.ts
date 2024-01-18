@@ -54,9 +54,9 @@ app.initializers.add('ianm/boring-avatars', () => {
       label: app.translator.trans('ianm-boring-avatars.admin.settings.identifier'),
       help: app.translator.trans('ianm-boring-avatars.admin.settings.identifier_help'),
       options: {
-        'id': app.translator.trans('ianm-boring-avatars.admin.settings.identifier_id'),
-        'display_name': app.translator.trans('ianm-boring-avatars.admin.settings.identifier_display_name'),
-        'email': app.translator.trans('ianm-boring-avatars.admin.settings.identifier_email'),
-      }
+        id: app.translator.trans('ianm-boring-avatars.admin.settings.identifier_id'),
+        display_name: app.translator.trans('ianm-boring-avatars.admin.settings.identifier_display_name'),
+        email: app.translator.trans('ianm-boring-avatars.admin.settings.identifier_email'),
+      },
     });
 });
