@@ -4,6 +4,27 @@
 
 A [Flarum](http://flarum.org) extension. Replace default Flarum avatars with Boring Avatars.
 
+## About
+
+Utilize generated "Boring Avatars" on your Flarum forum, without compromising your user privacy.
+
+## Features
+
+- Choose from 6 themes + plus an exclusive animated version of the "ring" theme
+- Customize the color palette used
+- Multiple identifier configuration (Select from ID, username or email address to generate unique avatars)
+- SVG avatars, which are directly included in the user object - no additional network requests to retrieve avatars
+- Automatically updates the avatar if the identifier changes
+- Supports GDPR export, anonymization, deletion
+
+## Usage
+
+When first enabled, a background task will be dispatched which will begin generating avatars for all of your users. Needless to say, if you have 100's of thousands of users, this could take a few minutes!
+
+Want to make changes to the generation settings? No problem, once the settings are changed, another background task will run to update the avatars.
+
+This extension is best used alongside a queue, especially when the forum has a large number of users.
+
 ## Installation
 
 Install with composer:
