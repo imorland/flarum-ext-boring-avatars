@@ -6,7 +6,7 @@ A [Flarum](http://flarum.org) extension. Replace default Flarum avatars with Bor
 
 ## About
 
-Utilize generated "Boring Avatars" on your Flarum forum, without compromising your user privacy.
+Utilize generated "Boring Avatars" on your Flarum forum, without compromising your user privacy. It is a PHP port of the [React based Boring Avatars](https://github.com/boringdesigners/boring-avatars)
 
 ## Features
 

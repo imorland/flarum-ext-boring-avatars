@@ -11,23 +11,26 @@
 
 namespace IanM\BoringAvatars\Job;
 
+use Flarum\Database\Eloquent\Collection;
 use Flarum\Queue\AbstractJob;
-use IanM\BoringAvatars\Console\GenerateBoringAvatars;
-use Illuminate\Contracts\Container\Container;
-use Symfony\Component\Console\Input\ArrayInput;
-use Symfony\Component\Console\Output\NullOutput;
+use Flarum\User\User;
+use Illuminate\Contracts\Queue\Queue;
 
 class AvatarGenerationJob extends AbstractJob
 {
+    const BATCH_SIZE = 1000;
+    
     public function __construct(
         protected bool $force = false
     ) {
     }
 
-    public function handle(GenerateBoringAvatars $command, Container $container): void
+    public function handle(Queue $queue): void
     {
-        $command->setLaravel($container);
+        $force = $this->force;
 
-        $command->run(new ArrayInput($this->force ? ['--force' => true] : []), new NullOutput());
+        User::query()->chunkById(self::BATCH_SIZE, function (Collection $users) use ($queue, $force) {
+            $queue->push(new AvatarGenerationBatch($users, $force));
+        });
     }
 }
