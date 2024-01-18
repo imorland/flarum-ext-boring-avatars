@@ -19,7 +19,7 @@ use Illuminate\Contracts\Queue\Queue;
 class AvatarGenerationJob extends AbstractJob
 {
     const BATCH_SIZE = 1000;
-    
+
     public function __construct(
         protected bool $force = false
     ) {
