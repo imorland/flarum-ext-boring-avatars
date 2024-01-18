@@ -14,6 +14,8 @@ namespace IanM\BoringAvatars\Listener;
 use Blomstra\Gdpr\Events\Erased;
 use Blomstra\Gdpr\Models\ErasureRequest;
 use Flarum\Bus\Dispatcher as BusDispatcher;
+use Flarum\Settings\SettingsRepositoryInterface;
+use Flarum\User\Event\EmailChanged;
 use Flarum\User\Event\LoggedIn;
 use Flarum\User\Event\Registered;
 use Flarum\User\Event\Renamed;
@@ -23,19 +25,25 @@ use Illuminate\Contracts\Events\Dispatcher as EventsDispatcher;
 
 class GenerateAvatar
 {
-    public function __construct(public BusDispatcher $bus)
-    {
+    public function __construct(
+        public BusDispatcher $bus,
+        protected SettingsRepositoryInterface $settings
+    ) {
     }
 
     public function subscribe(EventsDispatcher $events): void
     {
-        $events->listen([Registered::class, LoggedIn::class, Renamed::class], [$this, 'generate']);
+        $events->listen([Registered::class, LoggedIn::class, Renamed::class, EmailChanged::class], [$this, 'generate']);
         $events->listen(Erased::class, [$this, 'handleErased']);
     }
 
     public function generate($event): void
     {
-        if ((!$event->user->isGuest() && empty($event->user->user_svg)) || $event instanceof Renamed) {
+        if (
+            (!$event->user->isGuest() && empty($event->user->user_svg)) ||
+            ($event instanceof Renamed && $this->getIdentifier() === 'display_name') ||
+            ($event instanceof EmailChanged && $this->getIdentifier() === 'email')
+        ) {
             $event->user = $this->bus->dispatch(new GenerateAvatarCommand(
                 $event->user,
                 BoringAvatar::$defaultGenerationSize,
@@ -57,5 +65,10 @@ class GenerateAvatar
                 ));
             }
         }
+    }
+
+    protected function getIdentifier(): string
+    {
+        return $this->settings->get('ianm-boring-avatars.identifier');
     }
 }
