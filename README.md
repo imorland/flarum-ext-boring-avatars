@@ -18,6 +18,29 @@ Utilize generated "Boring Avatars" on your Flarum forum, without compromising yo
 - Automatically updates the avatar if the identifier changes
 - Supports GDPR export, anonymization, deletion
 
+## Screenshots
+
+### Bauhaus
+![bauhaus](https://github.com/imorland/flarum-ext-boring-avatars/assets/16573496/36db7a2a-43f8-4e54-85c6-0d983e40a3e6)
+
+### Beam
+![beam](https://github.com/imorland/flarum-ext-boring-avatars/assets/16573496/a2716645-2230-426d-af77-6f492485b626)
+
+### Marble
+![marble](https://github.com/imorland/flarum-ext-boring-avatars/assets/16573496/00268553-37e0-4b3a-9e80-e9a40ea5681d)
+
+### Pixel
+![pixel](https://github.com/imorland/flarum-ext-boring-avatars/assets/16573496/042bb78d-50fd-4500-a4a7-fcb1e721133e)
+
+### Ring
+![ring](https://github.com/imorland/flarum-ext-boring-avatars/assets/16573496/4840353d-204b-46fc-b6dd-27df2b47d9dc)
+
+### Sunset
+![sunset](https://github.com/imorland/flarum-ext-boring-avatars/assets/16573496/4554b185-ecc2-4185-93cf-75c426baad5f)
+
+### Settings
+![settings](https://github.com/imorland/flarum-ext-boring-avatars/assets/16573496/05b70f55-31f0-4aee-852a-6344ae37630f)
+
 ## Usage
 
 When first enabled, a background task will be dispatched which will begin generating avatars for all of your users. Needless to say, if you have 100's of thousands of users, this could take a few minutes!
