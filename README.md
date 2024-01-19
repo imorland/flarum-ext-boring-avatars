@@ -29,7 +29,7 @@ This extension is best used alongside a queue, especially when the forum has a l
 An API endpoint is also available to directly retrieve the avatar for a user:
 
 ```
-/api/users[id]/boring-avatar
+/api/users/[id]/boring-avatar
 ```
 
 this will return the SVG image file for the given user.
