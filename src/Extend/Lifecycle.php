@@ -26,12 +26,12 @@ class Lifecycle implements ExtenderInterface, LifecycleInterface
             ->push(new AvatarGenerationJob());
     }
 
-    public function onDisable(Container $container, Extension $extension)
+    public function onDisable(Container $container, Extension $extension): void
     {
         // Do nothing
     }
 
-    public function extend(Container $container, Extension $extension = null)
+    public function extend(Container $container, Extension $extension = null): void
     {
         // Do nothing
     }
