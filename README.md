@@ -54,7 +54,7 @@ php flarum cache:clear
 
 - [Packagist](https://packagist.org/packages/ianm/boring-avatars)
 - [GitHub](https://github.com/ianm/boring-avatars)
-- [Discuss](https://discuss.flarum.org/d/PUT_DISCUSS_SLUG_HERE)
+- [Discuss](https://discuss.flarum.org/d/33989)
 - [Extension Icon](https://source.boringavatars.com/beam/30/Flarum%20Boring%20Avatar?square)
 
 ## Support

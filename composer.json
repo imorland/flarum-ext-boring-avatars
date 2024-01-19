@@ -8,7 +8,8 @@
     "license": "MIT",
     "support": {
         "issues": "https://github.com/imorland/flarum-ext-boring-avatars/issues",
-        "source": "https://github.com/imorland/flarum-ext-boring-avatars"
+        "source": "https://github.com/imorland/flarum-ext-boring-avatars",
+        "forum": "https://discuss.flarum.org/d/33989"
     },
     "funding": [
         {
