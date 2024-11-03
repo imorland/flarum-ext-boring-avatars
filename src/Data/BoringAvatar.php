@@ -11,7 +11,7 @@
 
 namespace IanM\BoringAvatars\Data;
 
-use Blomstra\Gdpr\Data\Type;
+use Flarum\Gdpr\Data\Type;
 
 class BoringAvatar extends Type
 {

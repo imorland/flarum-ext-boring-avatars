@@ -11,7 +11,7 @@
 
 namespace IanM\BoringAvatars;
 
-use Blomstra\Gdpr\Extend\UserData;
+use Flarum\Gdpr\Extend\UserData;
 use Flarum\Api\Serializer\BasicUserSerializer;
 use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Extend;
@@ -73,7 +73,7 @@ return [
         ->command(Console\GenerateBoringAvatars::class),
 
     (new Extend\Conditional())
-        ->whenExtensionEnabled('blomstra-gdpr', fn () => [
+        ->whenExtensionEnabled('flarum-gdpr', fn () => [
             (new UserData())
                 ->addType(Data\BoringAvatar::class),
         ]),
