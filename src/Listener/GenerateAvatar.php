@@ -11,9 +11,9 @@
 
 namespace IanM\BoringAvatars\Listener;
 
+use Flarum\Bus\Dispatcher as BusDispatcher;
 use Flarum\Gdpr\Events\Erased;
 use Flarum\Gdpr\Models\ErasureRequest;
-use Flarum\Bus\Dispatcher as BusDispatcher;
 use Flarum\Settings\SettingsRepositoryInterface;
 use Flarum\User\Event\EmailChanged;
 use Flarum\User\Event\LoggedIn;
