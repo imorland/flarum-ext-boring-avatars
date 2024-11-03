@@ -11,11 +11,11 @@
 
 namespace IanM\BoringAvatars;
 
-use Flarum\Gdpr\Extend\UserData;
 use Flarum\Api\Serializer\BasicUserSerializer;
 use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Extend;
 use Flarum\Frontend\Document;
+use Flarum\Gdpr\Extend\UserData;
 use Flarum\Settings\Event\Saved;
 use Flarum\User\User;
 use IanM\BoringAvatars\Api\Serializer\AddBoringAvatarAttributes;
