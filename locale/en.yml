@@ -16,7 +16,7 @@ ianm-boring-avatars:
       theme_help: |
         The theme to use for the boring avatars.
 
-blomstra-gdpr:
+flarum-gdpr:
   lib:
     data:
       boringavatar:
