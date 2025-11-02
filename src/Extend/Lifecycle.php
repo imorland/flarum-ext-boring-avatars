@@ -29,8 +29,8 @@ class Lifecycle implements ExtenderInterface, LifecycleInterface
         if ($queue instanceof SyncQueue) {
             // If using the sync queue, we can't run the job as at the point of this Lifecycle event
             // the provider has not yet been registered, therefore we'd get an error trying to resolve BoringAvatar.
-            // So we skip avatar generation in this case.
-            // TODO: figure out a way around this problem.
+            // Workaround: Set a flag that will trigger job on next request
+            $container->make('flarum.settings')->set('ianm-boring-avatars.generate_on_next_request', true);
         } else {
             $queue->push(new AvatarGenerationJob());
         }

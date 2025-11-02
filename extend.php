@@ -25,6 +25,12 @@ return [
 
     new Lifecycle(),
 
+    (new Extend\Middleware('forum'))
+        ->add(Middleware\QueuePendingJobs::class),
+
+    (new Extend\Middleware('admin'))
+        ->add(Middleware\QueuePendingJobs::class),
+
     (new Extend\Frontend('forum'))
         ->js(__DIR__.'/js/dist/forum.js')
         ->css(__DIR__.'/less/forum.less'),
