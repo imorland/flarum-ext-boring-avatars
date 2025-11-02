@@ -11,20 +11,13 @@
 
 namespace IanM\BoringAvatars;
 
-use Flarum\Api\Serializer\BasicUserSerializer;
-use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Extend;
 use Flarum\Frontend\Document;
 use Flarum\Gdpr\Extend\UserData;
 use Flarum\Settings\Event\Saved;
 use Flarum\User\User;
-use IanM\BoringAvatars\Api\Serializer\AddBoringAvatarAttributes;
-use IanM\BoringAvatars\Api\Serializer\AddForumAttributes;
 use IanM\BoringAvatars\Extend\Lifecycle;
-use Flarum\Api\Context;
-use Flarum\Api\Endpoint;
 use Flarum\Api\Resource;
-use Flarum\Api\Schema;
 
 return [
     (new Extend\Frontend('forum'))
@@ -48,13 +41,8 @@ return [
     (new Extend\Routes('api'))
         ->get('/users/{id}/boring-avatar', 'users.boring-avatar', Api\Controller\ShowBoringAvatarController::class),
 
-    // @TODO: Replace with the new implementation https://docs.flarum.org/2.x/extend/api#extending-api-resources
-    (new Extend\ApiSerializer(BasicUserSerializer::class))
-        ->attributes(AddBoringAvatarAttributes::class),
-
-    // @TODO: Replace with the new implementation https://docs.flarum.org/2.x/extend/api#extending-api-resources
-    (new Extend\ApiSerializer(ForumSerializer::class))
-        ->attributes(AddForumAttributes::class),
+    (new Extend\ApiResource(Resource\UserResource::class))
+        ->fields(Api\AddBoringAvatarAttributes::class),
 
     (new Extend\ServiceProvider())
         ->register(Provider\BoringAvatarProvider::class),

@@ -69,7 +69,7 @@
     "require-dev": {
         "fof/oauth": "*",
         "flarum/phpstan": "^2.0.0-beta",
-        "flarum/gdpr": "dev-main"
+        "flarum/gdpr": "*"
     },
     "scripts": {
         "analyse:phpstan": "phpstan analyse",
