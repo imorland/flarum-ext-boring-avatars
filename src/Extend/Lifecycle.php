@@ -31,7 +31,6 @@ class Lifecycle implements ExtenderInterface, LifecycleInterface
             // the provider has not yet been registered, therefore we'd get an error trying to resolve BoringAvatar.
             // So we skip avatar generation in this case.
             // TODO: figure out a way around this problem.
-
         } else {
             $queue->push(new AvatarGenerationJob());
         }

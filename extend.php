@@ -13,7 +13,6 @@ namespace IanM\BoringAvatars;
 
 use Flarum\Api\Resource;
 use Flarum\Extend;
-use Flarum\Extension\Event\Enabled;
 use Flarum\Frontend\Document;
 use Flarum\Gdpr\Extend\UserData;
 use Flarum\Settings\Event\Saved;
@@ -24,7 +23,7 @@ return [
     (new Extend\ServiceProvider())
         ->register(Provider\BoringAvatarProvider::class),
 
-    (new Lifecycle()),
+    new Lifecycle(),
 
     (new Extend\Frontend('forum'))
         ->js(__DIR__.'/js/dist/forum.js')
