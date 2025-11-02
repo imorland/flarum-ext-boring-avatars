@@ -14,7 +14,7 @@ app.initializers.add('ianm/boring-avatars', () => {
     {} as Record<string, string>
   );
 
-  app.extensionData
+  app.registry
     .for('ianm-boring-avatars')
     .registerSetting({
       setting: 'ianm-boring-avatars.theme',
