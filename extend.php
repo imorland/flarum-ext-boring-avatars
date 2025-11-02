@@ -11,13 +11,13 @@
 
 namespace IanM\BoringAvatars;
 
+use Flarum\Api\Resource;
 use Flarum\Extend;
 use Flarum\Frontend\Document;
 use Flarum\Gdpr\Extend\UserData;
 use Flarum\Settings\Event\Saved;
 use Flarum\User\User;
 use IanM\BoringAvatars\Extend\Lifecycle;
-use Flarum\Api\Resource;
 
 return [
     (new Extend\Frontend('forum'))
