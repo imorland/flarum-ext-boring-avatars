@@ -31,7 +31,7 @@ class Lifecycle implements ExtenderInterface, LifecycleInterface
         // Do nothing
     }
 
-    public function extend(Container $container, Extension $extension = null): void
+    public function extend(Container $container, ?Extension $extension = null): void
     {
         // Do nothing
     }

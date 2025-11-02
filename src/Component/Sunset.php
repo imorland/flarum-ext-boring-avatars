@@ -34,7 +34,7 @@ class Sunset extends BoringAvatar
         return $colorsList;
     }
 
-    public function generateSvg(string $name, int $renderSize = 80, bool $square = false, array $colors = null): View
+    public function generateSvg(string $name, int $renderSize = 80, bool $square = false, ?array $colors = null): View
     {
         if (empty($colors)) {
             $colors = $this->getDefaultColors();
