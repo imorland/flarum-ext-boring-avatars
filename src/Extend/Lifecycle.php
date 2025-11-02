@@ -17,13 +17,24 @@ use Flarum\Extension\Extension;
 use IanM\BoringAvatars\Job\AvatarGenerationJob;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\Queue\Queue;
+use Illuminate\Queue\SyncQueue;
 
 class Lifecycle implements ExtenderInterface, LifecycleInterface
 {
     public function onEnable(Container $container, Extension $extension): void
     {
-        $container->make(Queue::class)
-            ->push(new AvatarGenerationJob());
+        /** @var Queue $queue */
+        $queue = $container->make(Queue::class);
+
+        if ($queue instanceof SyncQueue) {
+            // If using the sync queue, we can't run the job as at the point of this Lifecycle event
+            // the provider has not yet been registered, therefore we'd get an error trying to resolve BoringAvatar.
+            // So we skip avatar generation in this case.
+            // TODO: figure out a way around this problem.
+
+        } else {
+            $queue->push(new AvatarGenerationJob());
+        }
     }
 
     public function onDisable(Container $container, Extension $extension): void

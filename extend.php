@@ -13,6 +13,7 @@ namespace IanM\BoringAvatars;
 
 use Flarum\Api\Resource;
 use Flarum\Extend;
+use Flarum\Extension\Event\Enabled;
 use Flarum\Frontend\Document;
 use Flarum\Gdpr\Extend\UserData;
 use Flarum\Settings\Event\Saved;
@@ -20,6 +21,11 @@ use Flarum\User\User;
 use IanM\BoringAvatars\Extend\Lifecycle;
 
 return [
+    (new Extend\ServiceProvider())
+        ->register(Provider\BoringAvatarProvider::class),
+
+    (new Lifecycle()),
+
     (new Extend\Frontend('forum'))
         ->js(__DIR__.'/js/dist/forum.js')
         ->css(__DIR__.'/less/forum.less'),
@@ -36,16 +42,11 @@ return [
     (new Extend\Model(User::class))
         ->cast('user_svg', 'string'),
 
-    new Lifecycle(),
-
     (new Extend\Routes('api'))
         ->get('/users/{id}/boring-avatar', 'users.boring-avatar', Api\Controller\ShowBoringAvatarController::class),
 
     (new Extend\ApiResource(Resource\UserResource::class))
         ->fields(Api\AddBoringAvatarAttributes::class),
-
-    (new Extend\ServiceProvider())
-        ->register(Provider\BoringAvatarProvider::class),
 
     (new Extend\View())
         ->namespace('ianm-boring-avatars', __DIR__.'/views/boring'),

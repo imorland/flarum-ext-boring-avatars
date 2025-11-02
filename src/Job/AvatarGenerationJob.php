@@ -29,7 +29,8 @@ class AvatarGenerationJob extends AbstractJob
     {
         $force = $this->force;
 
-        User::query()->chunkById(self::BATCH_SIZE, function (Collection $users) use ($queue, $force) {
+        User::query()->chunkById(self::BATCH_SIZE, function ($users) use ($queue, $force) {
+            /** @var Collection $users */
             $queue->push(new AvatarGenerationBatch($users, $force));
         });
     }
