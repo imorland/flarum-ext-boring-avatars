@@ -43,19 +43,17 @@ Utilize generated "Boring Avatars" on your Flarum forum, without compromising yo
 
 ## Usage
 
-When first enabled, a background task will be dispatched which will begin generating avatars for all of your users. Needless to say, if you have 100's of thousands of users, this could take a few minutes!
+After enabling, select **Boring Avatars** as the avatar driver under **Admin → Basics → Avatar Driver**. Avatars are generated on first view and cached automatically, so no background jobs or queue setup is required.
 
-Want to make changes to the generation settings? No problem, once the settings are changed, another background task will run to update the avatars.
+Changing any setting (theme, colors, identifier) will clear all cached avatars, and they will be regenerated as users are next viewed.
 
-This extension is best used alongside a queue, especially when the forum has a large number of users.
+To eagerly pre-generate avatars for all users, run:
 
-An API endpoint is also available to directly retrieve the avatar for a user:
-
-```
-/api/users/[id]/boring-avatar
+```sh
+php flarum boringavatars:generate
 ```
 
-this will return the SVG image file for the given user.
+Use `--force` to regenerate avatars for users who already have one.
 
 ## Installation
 
