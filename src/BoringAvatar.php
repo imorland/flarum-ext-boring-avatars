@@ -126,7 +126,7 @@ abstract class BoringAvatar
     {
         $index = $this->getModulus($number, $range);
 
-        return $colors[$index];
+        return $colors[(int) $index];
     }
 
     /**
