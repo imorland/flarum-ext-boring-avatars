@@ -16,8 +16,6 @@ use Flarum\Gdpr\Events\Erased;
 use Flarum\Gdpr\Models\ErasureRequest;
 use Flarum\Settings\SettingsRepositoryInterface;
 use Flarum\User\Event\EmailChanged;
-use Flarum\User\Event\LoggedIn;
-use Flarum\User\Event\Registered;
 use Flarum\User\Event\Renamed;
 use IanM\BoringAvatars\BoringAvatar;
 use IanM\BoringAvatars\Command\GenerateAvatar as GenerateAvatarCommand;
@@ -33,22 +31,19 @@ class GenerateAvatar
 
     public function subscribe(EventsDispatcher $events): void
     {
-        $events->listen([Registered::class, LoggedIn::class, Renamed::class, EmailChanged::class], [$this, 'generate']);
+        $events->listen([Renamed::class, EmailChanged::class], [$this, 'regenerateOnIdentifierChange']);
         $events->listen(Erased::class, [$this, 'handleErased']);
     }
 
-    public function generate($event): void
+    public function regenerateOnIdentifierChange($event): void
     {
         if (
-            (!$event->user->isGuest() && empty($event->user->user_svg)) ||
             ($event instanceof Renamed && $this->getIdentifier() === 'display_name') ||
             ($event instanceof EmailChanged && $this->getIdentifier() === 'email')
         ) {
-            $event->user = $this->bus->dispatch(new GenerateAvatarCommand(
-                $event->user,
-                BoringAvatar::$defaultGenerationSize,
-                BoringAvatar::$defaultSquareAvatar
-            ));
+            // Null out the cached SVG so the driver regenerates it on next view.
+            $event->user->user_svg = null;
+            $event->user->save();
         }
     }
 

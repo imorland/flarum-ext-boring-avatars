@@ -11,25 +11,18 @@
 
 namespace IanM\BoringAvatars;
 
-use Flarum\Api\Resource;
 use Flarum\Extend;
 use Flarum\Frontend\Document;
 use Flarum\Gdpr\Extend\UserData;
 use Flarum\Settings\Event\Saved;
 use Flarum\User\User;
-use IanM\BoringAvatars\Extend\Lifecycle;
 
 return [
     (new Extend\ServiceProvider())
         ->register(Provider\BoringAvatarProvider::class),
 
-    new Lifecycle(),
-
-    (new Extend\Middleware('forum'))
-        ->add(Middleware\QueuePendingJobs::class),
-
-    (new Extend\Middleware('admin'))
-        ->add(Middleware\QueuePendingJobs::class),
+    (new Extend\User())
+        ->avatarDriver('boring-avatars', BoringAvatarDriver::class),
 
     (new Extend\Frontend('forum'))
         ->js(__DIR__.'/js/dist/forum.js')
@@ -46,12 +39,6 @@ return [
 
     (new Extend\Model(User::class))
         ->cast('user_svg', 'string'),
-
-    (new Extend\Routes('api'))
-        ->get('/users/{id}/boring-avatar', 'users.boring-avatar', Api\Controller\ShowBoringAvatarController::class),
-
-    (new Extend\ApiResource(Resource\UserResource::class))
-        ->fields(Api\AddBoringAvatarAttributes::class),
 
     (new Extend\View())
         ->namespace('ianm-boring-avatars', __DIR__.'/views/boring'),

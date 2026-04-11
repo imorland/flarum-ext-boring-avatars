@@ -19,8 +19,8 @@ use Illuminate\Console\Command;
 
 class GenerateBoringAvatars extends Command
 {
-    protected $signature = 'boringavatars:generate {--force : Generate avatars for all users regardless of their current state}';
-    protected $description = 'Generates Boring Avatars for all users based on the current settings.';
+    protected $signature = 'boringavatars:generate {--force : Regenerate avatars for all users, even those that already have one}';
+    protected $description = 'Pre-generates Boring Avatars for all users. Avatars are otherwise generated lazily on first view.';
 
     protected $updateCount = 0;
     protected $notRequired = 0;
