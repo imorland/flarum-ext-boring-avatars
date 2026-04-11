@@ -17,8 +17,7 @@
         }
     ],
     "require": {
-        "php": "^8.2",
-        "flarum/core": "^2.0.0-beta",
+        "flarum/core": "^2.0.0",
         "enshrined/svg-sanitize": "*"
     },
     "authors": [
@@ -36,7 +35,7 @@
     "extra": {
         "flarum-extension": {
             "title": "Boring Avatars",
-            "category": "",
+            "category": "theme",
             "icon": {
                 "image": "assets/logo.svg",
                 "backgroundColor": "#FECC4D",
@@ -64,12 +63,12 @@
             }
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "beta",
     "prefer-stable": true,
     "require-dev": {
         "fof/oauth": "*",
-        "flarum/phpstan": "^2.0.0-beta",
-        "flarum/gdpr": "*"
+        "flarum/phpstan": "^2.0.0",
+        "flarum/gdpr": "^2.0.0"
     },
     "scripts": {
         "analyse:phpstan": "phpstan analyse",
