@@ -1,2 +1,2 @@
-declare const _default: import("flarum/common/extenders/Model").default[];
+declare const _default: never[];
 export default _default;
